@@ -1,0 +1,5 @@
+.main{
+  width:100vw;
+  height: calc(100vh - 100px - 100px);
+  background-color: #F6F3E8;
+}

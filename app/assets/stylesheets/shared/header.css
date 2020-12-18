@@ -1,0 +1,30 @@
+.header{
+  width: 100vw;
+  height:100px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: center;
+}
+
+.header-left{
+  display: flex;
+}
+
+.app-name h1{
+  color:#B19177;
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.user-name p{
+  font-size: 20px;
+  margin-top: 10px;
+  color:#401C00;
+}
+
+.signup-button{
+  text-decoration: none;
+  color: #401C00;
+}
