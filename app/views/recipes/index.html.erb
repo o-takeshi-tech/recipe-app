@@ -1,7 +1,21 @@
 <%= render "shared/header"%>
 
 <div class="main">
-  
+  <div class="form">
+    <input class="search" type="text" placeholder="食材を入力してください">
+    <input class="submit" type="submit" value="レシピ検索">
+  </div>
+
+  <div class="recipes">
+    <div class="recipe">
+      <%= image_tag "bakedegg.jpg", class:"food-picture"%>
+      <div class="content">
+        <a href="#" class="title">卵焼き</a>
+        <p class="description">卵を焼く</p>
+        <p class="ingredient">材料：卵</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= render "shared/footer"%>

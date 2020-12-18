@@ -3,3 +3,52 @@
   height: calc(100vh - 100px - 100px);
   background-color: #F6F3E8;
 }
+
+.form{
+  text-align: center;
+  padding: 20px;
+}
+
+.search{
+  padding: 10px;
+  color: #401C00;
+  border: 1px solid #401C00;
+}
+
+.submit{
+  padding: 10px;
+  color: #401C00;
+  border: 1px solid #401C00;
+}
+
+.recipes{
+  width:100%;
+  overflow: scroll;
+}
+
+.recipe{
+  display: flex;
+  justify-content: center;
+  margin: 20px
+}
+
+.food-picture{
+  width:200px;
+  margin-right: 10px;
+}
+
+.title{
+  text-decoration: none;
+  color: #7D940C;
+  font-size: 40px;
+}
+
+.description{
+  color:#808080;
+  font-size: 20px;
+}
+
+.ingredient{
+  color:#CFAA7F;
+  font-size: 20px;
+}
