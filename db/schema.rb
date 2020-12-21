@@ -10,19 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_103709) do
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+ActiveRecord::Schema.define(version: 20_201_221_064_344) do
+  create_table 'recipes', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'ingredient', null: false
+    t.text 'description', null: false
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['user_id'], name: 'index_recipes_on_user_id'
   end
 
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'username', null: false
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  end
+
+  add_foreign_key 'recipes', 'users'
 end
