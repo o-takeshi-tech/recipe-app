@@ -32,7 +32,7 @@
 | Column          | Type        | Options                        |
 | --------------- | ----------- | ------------------------------ |
 | recipe_id       | references  | null: false, foreign_key: true |
-| ingredients_id  | references  | null: false, foreign_key: true |
+| ingredient_id   | references  | null: false, foreign_key: true |
 
 
 ### Association
