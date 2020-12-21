@@ -14,7 +14,8 @@
     <div class="user">
       <% if user_signed_in? %>
         <div class="buttons">
-          <%= link_to "ログアウト",destroy_user_session_path , method: :delete, class:"button logout-button" %>
+          <%= link_to "ログアウト", destroy_user_session_path , method: :delete, class:"button logout-button" %>
+          <%= link_to "ユーザー編集", edit_user_registration_path , class:"button logout-button" %>
           <%= link_to "レシピ登録", "#", class:"button recipe-button" %>
         </div>
       <% else %>
