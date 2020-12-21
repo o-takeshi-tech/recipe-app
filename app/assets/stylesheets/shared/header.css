@@ -18,13 +18,13 @@
   margin-right: 20px;
 }
 
-.user-name p{
+.user-name{
   font-size: 20px;
   margin-top: 10px;
   color:#401C00;
 }
 
-.signup-button{
+.button{
   text-decoration: none;
   color: #401C00;
   border: 1px solid #401C00;
