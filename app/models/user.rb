@@ -8,6 +8,5 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: { case_sensitive: true }
   validates_format_of :password, with: PASSWORD_REGEX, message: 'include both letters and numbers'
-
   validates :username, presence: true
 end
