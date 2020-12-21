@@ -22,7 +22,8 @@
       <label class="form-text">食材</label>
       <span class="indispensable">必須</span>
     </div>
-     <%= f.text_area :ingredient, class:"input-default", id:"ingredient", placeholder:"レシピ名を入力してください", maxlength:"40" %>
+    <%= f.collection_select(:ingredient, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, { class:"input-default"}) %>
+    <button type="button" class="button_plus">食材項目を追加</button>
      <%= link_to "食材を登録する", new_ingredient_path, class:"info-text" %>
   </div>
 
