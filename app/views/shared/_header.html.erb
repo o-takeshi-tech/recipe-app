@@ -4,20 +4,23 @@
       <h1>RecipeRator</h1>
     </div>
     <div class="user-name">
-      <P>たけしさん、ようこそ</p>
+      <% if user_signed_in? %>
+        <%= "#{current_user.username}さん、ようこそ" %>
+      <% end %>
     </div>
   </div>
   
   <div class="header-right">
     <div class="user">
-      <div class="signup">
-        <%= link_to "ユーザー新規登録",new_user_registration_path, class:"signup-button" %>
+    <% if user_signed_in? %>
+      <div class="buttons">
+        <%= link_to "ログアウト",destroy_user_session_path , method: :delete, class:"button logout-button" %>
+        <%= link_to "レシピ登録", "#", class:"button recipe-button" %>
+    <% else %>
+        <%= link_to "ログイン", new_user_session_path, class:"button login-button" %>
+        <%= link_to "ユーザー新規登録",new_user_registration_path, class:"button signup-button" %>
       </div>
-      <%# <div class="login">
-      </div>
-      <div class="recipe">
-      </div>
-      </div> %>
+    <% end %>
     </div>
   </div>
 </div>
