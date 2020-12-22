@@ -3,12 +3,12 @@ function add(){
   const buttonDelete = document.getElementById("button_delete");
   
   buttonPlus.addEventListener("click", () => {
-    const form = document.getElementById("ingredient-form");
+    const form = document.getElementById("ingredients");
     form.insertAdjacentHTML("afterend", ingredient);
   });
 
   buttonDelete.addEventListener("click", () => {
-    const form = document.getElementById("ingredient-form");
+    const form = document.getElementById("ingredients");
     form.remove();
   })
 };
