@@ -2,7 +2,9 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except:[:index]
   
   def index
+    @recipes = Recipe.includes(:user)
   end
+
   def new
     @recipe = Recipe.new
     @recipe.recipe_ingredients.build
