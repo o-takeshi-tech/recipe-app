@@ -22,10 +22,20 @@
       <label class="form-text">食材</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.collection_select(:ingredient_ids, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, {id:"ingredient-form", class:"input-default"}) %>
+    
+    <div id="ingredients" >
+      <%= f.fields_for :recipe_ingredients do |builder| %>
+        <%= render 'recipe_ingredient_fields', f: builder %>
+      <% end %>
+    </div>
 
+    <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
     <%= javascript_tag  do %>
-      const ingredient =  `<%= f.collection_select(:ingredient_ids, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, {id:"ingredient-form", class:"input-default"}) %>`
+      const ingredient =  `<div id="ingredients">
+        <%= f.fields_for :recipe_ingredients do |builder| %>
+          <%= render 'recipe_ingredient_fields', f: builder %>
+        <% end %>
+      </div>`
     <% end %>
 
     <button type="button" id="button_plus">食材項目を追加</button>
