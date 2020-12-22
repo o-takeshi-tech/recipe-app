@@ -16,6 +16,16 @@
     </div>
     <%= f.text_area :name, class:"input-default", id:"name", placeholder:"レシピ名を入力してください", maxlength:"40" %>
   </div> 
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">イメージ</label>
+    </div>
+     <label class="form-image">
+      <%= f.file_field :image, class: 'hidden' %>
+    </label>
+  </div> 
+
+ 
 
   <div class="form-group">
     <div class='form-text-wrap'>
