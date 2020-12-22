@@ -22,10 +22,10 @@
       <label class="form-text">食材</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.collection_select(:ingredient, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, {id:"ingredient-form", class:"input-default"}) %>
+    <%= f.collection_select(:ingredient_ids, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, {id:"ingredient-form", class:"input-default"}) %>
 
     <%= javascript_tag  do %>
-      const ingredient =  `<%= f.collection_select(:ingredient, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, {id:"ingredient-form", class:"input-default"}) %>`
+      const ingredient =  `<%= f.collection_select(:ingredient_ids, Ingredient.all, :id, :ingredient_name, {include_blank: "--" }, {id:"ingredient-form", class:"input-default"}) %>`
     <% end %>
 
     <button type="button" id="button_plus">食材項目を追加</button>
