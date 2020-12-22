@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.recipe_ingredients.build
     if @recipe.save
       redirect_to root_path
     else
