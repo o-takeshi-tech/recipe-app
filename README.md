@@ -18,7 +18,6 @@
 | Column              | Type       | Options                         |
 | ------------------- | ---------- | --------------------------------|
 | name                | string     | null: false                     |
-| ingredient          | integer    | null: false                     |
 | description         | text       | null: false                     |
 | user                | references | null: false, foreign_key: true  |
 

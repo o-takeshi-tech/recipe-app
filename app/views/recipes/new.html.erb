@@ -15,15 +15,35 @@
       <span class="indispensable">必須</span>
     </div>
     <%= f.text_area :name, class:"input-default", id:"name", placeholder:"レシピ名を入力してください", maxlength:"40" %>
-  </div>
+  </div> 
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">材料</label>
+      <label class="form-text">食材</label>
       <span class="indispensable">必須</span>
     </div>
-     <%= f.text_area :ingredient, class:"input-default", id:"ingredient", placeholder:"レシピ名を入力してください", maxlength:"40" %>
+    
+    <div id="ingredients" >
+      <%= f.fields_for :recipe_ingredients do |builder| %>
+        <%= render 'recipe_ingredient_fields', f: builder %>
+      <% end %>
+    </div>
+
+    <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
+    <%= javascript_tag  do %>
+      const ingredient =  `<div id="ingredients">
+        <%= f.fields_for :recipe_ingredients do |builder| %>
+          <%= render 'recipe_ingredient_fields', f: builder %>
+        <% end %>
+      </div>`
+    <% end %>
+
+    <button type="button" id="button_plus">食材項目を追加</button>
+    <button type="button" id="button_delete">食材項目を削除</button>
+     <%= link_to "食材を登録する", new_ingredient_path, class:"info-text" %>
   </div>
+
+
 
   <div class="form-group">
     <div class='form-text-wrap'>
