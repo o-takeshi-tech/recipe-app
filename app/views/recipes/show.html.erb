@@ -1,0 +1,18 @@
+<%= render "shared/header"%>
+<%# レシピの概要 %>
+<div class="recipe-show">
+  <div class="recipe-box">
+    <h2 class="name">
+      <%= @recipe.name %>
+    </h2>
+    <div class='recipe-img-content'>
+      <%= image_tag @recipe.image ,class:"recipe-box-img" %>
+    </div>
+    <div class="recipe-explain-box">
+      <span><%= @recipe.description %></span>
+    </div>  
+  </div>
+</div>
+  <%# /レシピの概要 %>
+
+<%= render "shared/footer"%>
