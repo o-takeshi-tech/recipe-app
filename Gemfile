@@ -59,3 +59,6 @@ gem 'devise'
 gem 'pry-rails'
 
 gem 'cocoon'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
