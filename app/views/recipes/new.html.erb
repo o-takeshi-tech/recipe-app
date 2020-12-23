@@ -34,7 +34,7 @@
       <span class="indispensable">必須</span>
     </div>
     
-    <div id="ingredients" >
+    <div class="ingredients" >
       <%= f.fields_for :recipe_ingredients do |builder| %>
         <%= render 'recipe_ingredient_fields', f: builder %>
       <% end %>
@@ -42,7 +42,7 @@
 
     <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
     <%= javascript_tag  do %>
-      const ingredient =  `<div id="ingredients">
+      const ingredient =  `<div class="ingredients">
         <%= f.fields_for :recipe_ingredients do |builder| %>
           <%= render 'recipe_ingredient_fields', f: builder %>
         <% end %>
