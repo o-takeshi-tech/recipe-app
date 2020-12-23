@@ -14,8 +14,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to root_path
-    else
-      @recipe.recipe_ingredients.build
+    else        
+      unless @recipe.recipe_ingredients.present?
+        @recipe.recipe_ingredients.build
+      end
       render :new
     end
   end

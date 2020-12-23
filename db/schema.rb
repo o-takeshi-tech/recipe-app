@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_12_22_090941) do
   end
 
   create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "recipe_id", null: false
-    t.bigint "ingredient_id", null: false
+    t.bigint "recipe_id"
+    t.bigint "ingredient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
