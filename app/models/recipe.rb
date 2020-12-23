@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
   with_options presence: true do
     validates :name, presence: true
     validates :description, presence: true
+    validates :image, presence: true
   end
   
 end
