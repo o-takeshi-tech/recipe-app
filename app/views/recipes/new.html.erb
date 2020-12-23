@@ -1,6 +1,8 @@
-<%= form_with model: @recipe, class: 'registration-main', local: true do |f| %>
+<%= render "shared/header"%>
 
-<div class='form-wrap'>
+<%= form_with model: @recipe, class: 'registration-main new', local: true do |f| %>
+
+<div class='form-wrap new'>
   <div class='form-header'>
     <h1 class='form-header-text'>
       レシピ登録
@@ -73,3 +75,4 @@
 <% end %>
 
 
+<%= render "shared/footer"%>
