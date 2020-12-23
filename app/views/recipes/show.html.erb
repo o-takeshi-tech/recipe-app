@@ -6,7 +6,7 @@
       <%= @recipe.name %>
     </h2>
     <div class='recipe-img-content'>
-      <%= image_tag @recipe.image ,class:"recipe-box-img" %>
+      <%= image_tag @recipe.image ,class:"recipe-box-img" if @recipe.image.attached? %>
     </div>
     <div class="recipe-explain-box">
       <span><%= @recipe.description %></span>
