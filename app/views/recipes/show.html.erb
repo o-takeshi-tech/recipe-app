@@ -5,14 +5,22 @@
     <h2 class="name">
       <%= @recipe.name %>
     </h2>
+    <div class="options">
+      <% if user_signed_in? %>
+        <% if current_user.id == @recipe.user.id %>
+          <%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "recipe-red-btn" %>
+          <%= link_to '削除', recipe_path(@recipe), method: :delete, class:'recipe-destroy' %>
+        <% end %>
+      <% end %>
+    </div>
     <div class='recipe-img-content'>
-      <%= image_tag @recipe.image ,class:"recipe-box-img" if @recipe.image.attached? %>
+      <%= image_tag @recipe.image.variant(resize: '500x500') ,class:"recipe-box-img" if @recipe.image.attached? %>
     </div>
     <div class="recipe-explain-box">
+      <p class="method">作り方</p>
       <span><%= @recipe.description %></span>
     </div>  
   </div>
 </div>
   <%# /レシピの概要 %>
-
 <%= render "shared/footer"%>
