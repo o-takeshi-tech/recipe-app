@@ -34,3 +34,16 @@
   border: 1px solid #401C00;
   padding:10px;
 }
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 599px){
+  .header{
+    display: block;
+    text-align: center;
+  }
+  .header-left{
+    margin-bottom: 10px;
+  }
+}

@@ -1,6 +1,5 @@
 .registration-main {
   width: 100vw;
-  min-width: 800px;
   height: 100vh;
   background-color:  #F6F3E8;
   display: flex;
@@ -23,7 +22,6 @@
 
 .form-header-text {
   line-height: 100px;
-  border-bottom: 1px solid #f5f5f5;
   font-weight: bold;
   color:#B19177;
 }
@@ -164,5 +162,23 @@
   color:  #401C00;
   text-align: right;
   cursor: pointer;
+}
+
+@media (max-width: 1024px){
+  .form-header{
+    height: 60px;
+  }
+}
+
+@media (max-width: 599px){
+  .form-header{
+    height: 60px;
+  }
+  .form-wrap{
+    width: 80%;
+  }
+  .input-default{
+    font-size: 15px;
+  }
 }
 
