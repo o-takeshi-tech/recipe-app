@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except:[:index]
-  
+  before_action :set_recipe, only:[:edit, :show]
   def index
     @recipes = Recipe.includes(:user)
   end
@@ -21,7 +21,17 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+  
+  end
+  
+  def edit 
+
+  end 
+
+  def update
+  end 
+
+  def destroy
   end
   
   private
@@ -29,5 +39,9 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name, :description, :image,
     recipe_ingredients_attributes: [:id, :recipe_id, :ingredient_id, :_destroy, 
     ingredient_attributes:[:ingredient_name]]).merge(user_id: current_user.id)
+  end
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end
