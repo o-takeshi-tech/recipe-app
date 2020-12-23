@@ -11,7 +11,7 @@
       <div class="recipe">
         <%= image_tag recipe.image , class:"food-picture" if recipe.image.attached?%>
         <div class="content">
-          <%= link_to recipe.name, "#" ,class:"title" %>
+          <%= link_to recipe.name, recipe_path(recipe) ,class:"title" %>
           <p class="description"><%= recipe.description %></p>
           <p class="ingredient">材料：
             <% recipe.ingredients.each do |ingredient|%>

@@ -11,11 +11,15 @@
   display: flex;
 }
 
-.app-name h1{
-  color:#B19177;
+.app-name {
   font-size: 30px;
   font-weight: bold;
   margin-right: 20px;
+}
+
+#recipe-rator{
+  text-decoration: none;
+  color:#B19177;
 }
 
 .user-name{
