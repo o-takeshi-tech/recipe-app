@@ -1,0 +1,35 @@
+<%= render "shared/header"%>
+
+<div class="main">
+  <%= form_with(url: search_recipes_path, local: true, method: :get, class: "form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "食材を入力してください", class: "search" %>
+    <%= form.submit "レシピ検索", class: "submit" %>
+  <% end %>
+
+  <div class="recipes">
+    <% if @ingredients.present? %>
+      <% @ingredients.each do |ingredient| %>
+        <% ingredient.recipes.each do |recipe| %>
+          <div class="recipe">
+            <%= image_tag recipe.image , class:"food-picture" if recipe.image.attached?%>
+            <div class="content">
+              <%= link_to recipe.name, recipe_path(recipe) ,class:"title" %>
+              <p class="ingredient">材料：
+                <% recipe.ingredients.each do |ingredient|%>
+                  [<%= ingredient.ingredient_name %>]
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="result">
+        <p class="search-result">検索された食材をつかうレシピはありません</p>
+        <%= link_to "レシピをつくる", new_recipe_path , class:"new-recipe" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer"%>

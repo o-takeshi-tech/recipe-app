@@ -44,6 +44,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    @ingredients = Ingredient.search(params[:keyword])
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(:name, :description, :image,
