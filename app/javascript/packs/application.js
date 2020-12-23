@@ -6,9 +6,8 @@
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
-require("../ingredient")
-require("jquery")
-require("@nathanvda/cocoon")
+require("../add")
+require("../destroy")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
