@@ -16,3 +16,16 @@
 .new{
   padding: 15px 0;
 }
+
+@media (max-width: 1024px){
+  .form-header{
+    height: 60px;
+  }
+}
+
+@media (max-width: 599px){
+  .form-header{
+    height: 60px;
+  }
+}
+

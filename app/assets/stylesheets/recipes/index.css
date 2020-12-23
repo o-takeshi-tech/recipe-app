@@ -53,3 +53,21 @@
   color:#CFAA7F;
   font-size: 20px;
 }
+
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 599px){
+  .recipes{
+    width: 70vw;
+    margin: 0 auto;
+  }
+  .title{
+    font-size: 20px;
+  }
+  .food-picture{
+    width: 150px;
+  }
+}
+
