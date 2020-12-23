@@ -10,6 +10,7 @@ class Recipe < ApplicationRecord
     validates :name
     validates :description
     validates :image
+    validates :recipe_ingredients
   end
   
 end
