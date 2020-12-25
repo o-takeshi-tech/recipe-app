@@ -9,7 +9,7 @@
     </h1>
   </div>
 
-  <%= render 'shared/error_messages', model: f.object %>  
+  <%= render 'shared/error_messages', model: @recipe %>  
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -18,6 +18,7 @@
     </div>
     <%= f.text_area :name, class:"input-default", id:"name", placeholder:"レシピ名を入力してください", maxlength:"40" %>
   </div> 
+
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">イメージ</label>
@@ -36,18 +37,29 @@
       <span class="indispensable">必須</span>
     </div>
     
+   
     <div class="ingredients" >
-      <%= f.fields_for :recipe_ingredients do |builder| %>
-        <%= render 'recipe_ingredient_fields', f: builder %>
-      <% end %>
+      <div class="nested-fields">
+        <select name="recipe[ingredient_ids][]">
+          <option value="">食材をえらんでください</option>
+            <% @ingredients.each do |ingredient| %>
+              <option value=<%=ingredient.id%>><%= ingredient.ingredient_name%></option>
+            <% end %>
+        </select>
+      </div>
     </div>
 
     <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
     <%= javascript_tag  do %>
       const ingredient =  
-      ` <%= f.fields_for :recipe_ingredients do |builder| %>
-          <%= render 'recipe_ingredient_fields', f: builder %>
-        <% end %>`
+      ` <div class="nested-fields">
+         <select name="recipe[ingredient_ids][]">
+          <option value="">食材をえらんでください</option>
+            <% @ingredients.each do |ingredient| %>
+              <option value=<%=ingredient.id%>><%= ingredient.ingredient_name%></option>
+            <% end %>
+        </select>
+      </div>`
     <% end %>
 
     <button type="button" id="button_plus">食材項目を追加</button>
