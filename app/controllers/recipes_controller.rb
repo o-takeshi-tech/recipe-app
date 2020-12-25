@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_ingredients.build
+    @ingredients = Ingredient.all
   end
 
   def create
@@ -17,9 +17,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to root_path
     else        
-      unless @recipe.recipe_ingredients.present?
-        @recipe.recipe_ingredients.build
-      end
+      @ingredients = Ingredient.all
       render :new
     end
   end
@@ -54,9 +52,7 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :image,
-    recipe_ingredients_attributes: [:id, :recipe_id, :ingredient_id, :_destroy, 
-    ingredient_attributes:[:ingredient_name]]).merge(user_id: current_user.id)
+    params.require(:recipe).permit(:name, :description,:image, ingredient_ids:[]).merge(user_id: current_user.id)
   end
 
   def set_recipe
