@@ -2,6 +2,7 @@
   width:100vw;
   height: calc(100vh - 100px - 100px);
   background-color: #F6F3E8;
+  overflow: scroll;
 }
 
 .form{
@@ -24,7 +25,6 @@
 .recipes{
   width:100vw;
   height: 80vh;
-  overflow: scroll;
 }
 
 .recipe{
