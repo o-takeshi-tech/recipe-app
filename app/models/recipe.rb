@@ -7,7 +7,6 @@ class Recipe < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :description
-    validates :image
     validates :recipe_ingredient_ids
   end
 end
