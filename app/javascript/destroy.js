@@ -1,6 +1,5 @@
-if (location.pathname.match("/recipes/new")){
-  document.addEventListener("DOMContentLoaded", () => {
-    const buttonDelete = document.getElementById("button_delete");
+function destroy (){
+  const buttonDelete = document.getElementById("button_delete");
   
   buttonDelete.addEventListener("click", () => {
     const form = document.querySelectorAll(".nested-fields");
@@ -11,5 +10,6 @@ if (location.pathname.match("/recipes/new")){
       form[formNumber].remove();
     };
   })
-  })
 };
+
+window.addEventListener("load", destroy );
