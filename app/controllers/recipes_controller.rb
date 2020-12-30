@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except:[:index]
   before_action :set_recipe, only:[:edit, :show, :update, :destroy]
+  before_action :set_ingredients, only:[:edit, :new]
   before_action :move_to_index, only:[:edit, :destroy, :update]
 
   def index
@@ -9,7 +10,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @ingredients = Ingredient.all
   end
 
   def create
@@ -63,5 +63,9 @@ class RecipesController < ApplicationController
     unless @recipe.user.id == current_user.id
       redirect_to root_path
     end
+  end
+
+  def set_ingredients
+    @ingredients = Ingredient.all
   end
 end
