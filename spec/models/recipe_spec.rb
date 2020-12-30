@@ -28,11 +28,6 @@ RSpec.describe Recipe, type: :model do
         @recipe.valid?
         expect(@recipe.errors.full_messages).to include("Recipe ingredient ids can't be blank")
       end
-      it 'imageが空だと保存できない' do
-        @recipe.image = nil
-        @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("Image can't be blank")
-      end
       it 'userが紐付いていないと保存できない' do
         @recipe.user = nil
         @recipe.valid?

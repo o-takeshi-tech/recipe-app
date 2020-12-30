@@ -1,17 +1,19 @@
 <%= render "shared/header"%>
 
 <div class="main">
-  <%= form_with(url: search_recipes_path, local: true, method: :get, class: "form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "食材を入力してください", class: "search" %>
-    <%= form.submit "レシピ検索", class: "submit" %>
-  <% end %>
 
+  <div class="result">
+    <%= link_to "ホームに戻る", root_path, class:"link"%>
+  </div>
+  
   <div class="recipes">
-    <% if @ingredients.present? %>
+    <% if @ingredients.present? %> 
       <% @ingredients.each do |ingredient| %>
         <% ingredient.recipes.each do |recipe| %>
           <div class="recipe">
-            <%= image_tag recipe.image , class:"food-picture" if recipe.image.attached?%>
+            <% if recipe.image.attached? %>
+              <%= image_tag recipe.image , class:"food-picture" if recipe.image.attached?%>
+            <% end %>
             <div class="content">
               <%= link_to recipe.name, recipe_path(recipe) ,class:"title" %>
               <p class="ingredient">材料：
@@ -25,8 +27,8 @@
       <% end %>
     <% else %>
       <div class="result">
-        <p class="search-result">検索された食材をつかうレシピはありません</p>
-        <%= link_to "レシピをつくる", new_recipe_path , class:"new-recipe" %>
+        <p class="submit-result">検索された食材をつかうレシピはありません</p>
+        <%= link_to "レシピをつくる", new_recipe_path , class:"link" %>
       </div>
     <% end %>
   </div>

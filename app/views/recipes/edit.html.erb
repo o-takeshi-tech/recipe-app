@@ -33,21 +33,30 @@
       <span class="indispensable">必須</span>
     </div>
     
-    <div id="ingredients" >
-      <%= f.fields_for :recipe_ingredients do |builder| %>
-        <%= render 'recipe_ingredient_fields', f: builder %>
-      <% end %>
+    <div class="ingredients" >
+      <div class="nested-fields">
+        <select name="recipe[ingredient_ids][]">
+          <option value="">食材をえらんでください</option>
+            <% @ingredients.each do |ingredient| %>
+              <option value=<%=ingredient.id%>><%= ingredient.ingredient_name%></option>
+            <% end %>
+        </select>
+      </div>
     </div>
 
     <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
     <%= javascript_tag  do %>
-      const ingredient =  `<div id="ingredients">
-        <%= f.fields_for :recipe_ingredients do |builder| %>
-          <%= render 'recipe_ingredient_fields', f: builder %>
-        <% end %>
+      const ingredient =  
+      ` <div class="nested-fields">
+         <select name="recipe[ingredient_ids][]">
+          <option value="">食材をえらんでください</option>
+            <% @ingredients.each do |ingredient| %>
+              <option value=<%=ingredient.id%>><%= ingredient.ingredient_name%></option>
+            <% end %>
+        </select>
       </div>`
     <% end %>
-
+    
     <button type="button" id="button_plus">食材項目を追加</button>
     <button type="button" id="button_delete">食材項目を削除</button>
      <%= link_to "食材を登録する", new_ingredient_path, class:"info-text" %>

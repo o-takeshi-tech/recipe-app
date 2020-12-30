@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :recipes do
     collection do 
       get 'search'
+      get 'submit'
     end
   end
   resources :ingredients, only: %i[new create]
