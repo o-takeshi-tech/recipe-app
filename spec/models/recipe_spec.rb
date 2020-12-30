@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  describe "レシピ登録" do
-    before do 
+  describe 'レシピ登録' do
+    before do
       @ingredient = FactoryBot.create(:ingredient)
       @recipe = FactoryBot.build(:recipe)
-      @recipe.ingredient_ids = @ingredient.id     
-    end 
+      @recipe.ingredient_ids = @ingredient.id
+    end
     context 'レシピ登録ができる時' do
       it 'name,description,image,user,ingredient_idsが揃えば保存できる' do
         expect(@recipe).to be_valid
@@ -31,9 +31,8 @@ RSpec.describe Recipe, type: :model do
       it 'userが紐付いていないと保存できない' do
         @recipe.user = nil
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("User must exist")
+        expect(@recipe.errors.full_messages).to include('User must exist')
       end
     end
-
   end
 end

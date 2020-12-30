@@ -31,13 +31,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails', '~> 4.0.0'
-  gem 'factory_bot_rails'
   gem 'capistrano'
-  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-rbenv'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :development do
@@ -71,7 +71,7 @@ gem 'pry-rails'
 
 gem 'cocoon'
 
-gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
 
-gem 'aws-sdk-s3' , require: false
+gem 'aws-sdk-s3', require: false

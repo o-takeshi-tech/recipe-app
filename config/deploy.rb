@@ -1,17 +1,16 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.1"
+lock '~> 3.14.1'
 
-set :application, "recipe-app"
-set :repo_url, "git@github.com:o-takeshi-tech/recipe-app.git"
-
+set :application, 'recipe-app'
+set :repo_url, 'git@github.com:o-takeshi-tech/recipe-app.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.6.5' 
+set :rbenv_ruby, '2.6.5'
 
 set :ssh_options, auth_methods: ['publickey'],
-                                  keys: ['~/.ssh/take1016cando.pem'] 
+                  keys: ['~/.ssh/take1016cando.pem']
 
 # プロセス番号を記載したファイルの場所
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }

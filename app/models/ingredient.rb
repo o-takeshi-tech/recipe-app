@@ -1,15 +1,11 @@
 class Ingredient < ApplicationRecord
   has_many :recipe_ingredients, dependent: :destroy
-  has_many :recipes, through: :recipe_ingredients 
+  has_many :recipes, through: :recipe_ingredients
 
   validates :ingredient_name, presence: true
   validates :ingredient_name, uniqueness: true
 
   def self.search(search)
-    if search != ""
-      Ingredient.where('ingredient_name LIKE(?)', "%#{search}%")
-    else 
-      return nil      
-    end
+    Ingredient.where('ingredient_name LIKE(?)', "%#{search}%") if search != ''
   end
 end
