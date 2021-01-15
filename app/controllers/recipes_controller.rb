@@ -52,6 +52,20 @@ class RecipesController < ApplicationController
 
   def search
     @ingredients = Ingredient.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword])
+    @results = []
+    
+    @ingredients.each do |ingredient|
+      ingredient.recipes.each do |recipe|
+        @results << recipe
+      end
+    end
+
+    @recipes.each do |recipe|
+      @results << recipe
+    end
+    
+    @results = @results.uniq
   end
 
   private

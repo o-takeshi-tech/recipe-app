@@ -9,4 +9,8 @@ class Recipe < ApplicationRecord
     validates :description
     validates :recipe_ingredient_ids
   end
+
+  def self.search(search)
+    Recipe.where('name LIKE(?)', "%#{search}%") if search != ''
+  end
 end
