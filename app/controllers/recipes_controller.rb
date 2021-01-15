@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   before_action :move_to_index, only: %i[edit destroy update]
 
   def index
-    @recipes = Recipe.includes(:user)
+    @recipes = Recipe.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to root_path
     else
-      @ingredients = Ingredient.all
+      @ingredients = Ingredient.includes(:user).order("created_at DESC")
       render :new
     end
   end
