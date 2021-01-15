@@ -42,14 +42,15 @@ class RecipesController < ApplicationController
     end
   end
 
-  def search
+  def match
     return nil if params[:keyword] == ''
 
-    ingredient = Ingredient.where(['ingredient_name LIKE ?', "%#{params[:keyword]}%"])
+    ingredient = Ingredient.where(['ingredient_name LIKE ?', "%#{params[:keyword]}%"]) 
+    
     render json: { keyword: ingredient }
   end
 
-  def submit
+  def search
     @ingredients = Ingredient.search(params[:keyword])
   end
 

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'recipes#index'
   resources :recipes do
     collection do
+      get 'match'
       get 'search'
-      get 'submit'
     end
   end
   resources :ingredients, only: %i[new create]
