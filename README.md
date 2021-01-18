@@ -43,7 +43,7 @@
 
 | Column          | Type        | Options                        |
 | --------------- | ----------- | ------------------------------ |
-| ingredient_name | string      | null: false                    |
+| ingredient_name | string      | null: false uniqueness: true   |
 
 
 ### Association

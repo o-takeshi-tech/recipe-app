@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   before_action :move_to_index, only: %i[edit destroy update]
 
   def index
-    @recipes = Recipe.includes(:user)
+    @recipes = Recipe.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to root_path
     else
-      @ingredients = Ingredient.all
+      @ingredients = Ingredient.includes(:user).order("created_at DESC")
       render :new
     end
   end
@@ -42,15 +42,30 @@ class RecipesController < ApplicationController
     end
   end
 
-  def search
+  def match
     return nil if params[:keyword] == ''
 
-    ingredient = Ingredient.where(['ingredient_name LIKE ?', "%#{params[:keyword]}%"])
+    ingredient = Ingredient.where(['ingredient_name LIKE ?', "%#{params[:keyword]}%"]) 
+    
     render json: { keyword: ingredient }
   end
 
-  def submit
+  def search
     @ingredients = Ingredient.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword])
+    @results = []
+    
+    @ingredients.each do |ingredient|
+      ingredient.recipes.each do |recipe|
+        @results << recipe
+      end
+    end
+
+    @recipes.each do |recipe|
+      @results << recipe
+    end
+    
+    @results = @results.uniq
   end
 
   private

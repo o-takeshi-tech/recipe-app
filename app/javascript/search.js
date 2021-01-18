@@ -3,7 +3,7 @@ function search (){
   inputElement.addEventListener("keyup", () => {
     const keyword = document.getElementById("keyword").value;
     const XHR = new XMLHttpRequest();
-    XHR.open("GET", `recipes/search/?keyword=${keyword}`, true);
+    XHR.open("GET", `recipes/match/?keyword=${keyword}`, true);
     XHR.responseType = "json";
     XHR.send();
 
