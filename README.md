@@ -1,5 +1,7 @@
 # RecipeRator
 
+[![Image from Gyazo](https://i.gyazo.com/cf2c2d3d3a3f1f644ca8847994a16d10.jpg)](https://gyazo.com/cf2c2d3d3a3f1f644ca8847994a16d10)
+
 # 概要
 
 * ユーザー登録・ログイン機能
@@ -10,6 +12,16 @@
 # 本番環境
 
 http://52.68.31.63/
+
+## 投稿用ユーザー
+
+* メールアドレス:hoge@hoge
+* パスワード:hoge1111
+
+## 確認用ユーザー
+
+* メールアドレス:fuga@fuga
+* パスワード:fuga@fuga
 
 
 # 制作背景
