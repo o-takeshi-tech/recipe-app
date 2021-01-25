@@ -17,6 +17,10 @@
   padding: 15px 0;
 }
 
+.hide{
+  display: none;
+}
+
 @media (max-width: 1024px){
   .form-header{
     height: 60px;
