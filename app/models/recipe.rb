@@ -4,11 +4,6 @@ class Recipe < ApplicationRecord
   has_many  :ingredients, through: :recipe_ingredients
   has_one_attached :image
 
-  with_options presence: true do
-    validates :name
-    validates :description
-    validates :recipe_ingredient_ids
-  end
 
   def self.search(search)
     Recipe.where('name LIKE(?)', "%#{search}%") if search != ''

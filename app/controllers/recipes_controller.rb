@@ -17,7 +17,6 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to root_path
     else
-      @ingredients = Ingredient.includes(:user).order("created_at DESC")
       render :content
     end
   end
@@ -75,7 +74,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe_form).permit(:name, :description, :image, ingredient_name: []).merge(user_id: current_user.id)
+    params.require(:recipe_form).permit(:name, :description, :image, :ingredient_name).merge(user_id: current_user.id)
   end
 
   def set_recipe

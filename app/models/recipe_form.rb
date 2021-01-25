@@ -11,7 +11,8 @@ class RecipeForm
 
   def save
     binding.pry
-    ingredient = Ingredient.create(ingredient_name: ingredient_name)
+    ingredient = Ingredient.where(ingredient_name: ingredient_name).first_or_initialize
+    ingredient.save
     recipe = Recipe.create(name: name, description: description, user_id: user_id)
     RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: ingredient.id)
   end
