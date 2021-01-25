@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_recipe, only: %i[edit show update destroy]
-  before_action :set_ingredients, only: %i[edit new]
+  before_action :set_ingredients, only: %i[edit new content]
   before_action :move_to_index, only: %i[edit destroy update]
 
   def index
@@ -9,17 +9,21 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = RecipeForm.new
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = RecipeForm.new(recipe_params)
     if @recipe.save
       redirect_to root_path
     else
       @ingredients = Ingredient.includes(:user).order("created_at DESC")
-      render :new
+      render :content
     end
+  end
+
+  def content
+    @recipe = RecipeForm.new(recipe_params)
   end
 
   def show; end
@@ -71,7 +75,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :image, ingredient_ids: []).merge(user_id: current_user.id)
+    params.require(:recipe_form).permit(:name, :description, :image, ingredient_name: []).merge(user_id: current_user.id)
   end
 
   def set_recipe
