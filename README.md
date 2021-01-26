@@ -122,6 +122,7 @@ http://52.68.31.63/
 
 - belongs_to :user
 - has_many   :ingredients, through :recipe_ingredients
+- has_many   :quantities
 
 ## recipe_ingredients テーブル
 
@@ -145,6 +146,7 @@ http://52.68.31.63/
 ### Association
 
 - has_many :recipes, through: recipe_ingredients
+- has_many :quantities
 
 ## quantities テーブル
 
@@ -157,5 +159,7 @@ http://52.68.31.63/
 
 ### Association
 
-- has_many :recipes, through: recipe_ingredients
+- belongs_to :recipe
+- belongs_to :ingredient
+
 
