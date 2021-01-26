@@ -23,22 +23,32 @@
   </div> 
 
   <div class="form-group"> 
-      <div class='form-text-wrap'>
-        <label class="form-text">食材名</label>
-        <span class="indispensable">必須</span>
+    <div class="ingredient-group">
+      <div class='ingredient-wrap'>
+        <label class="form-text">食材・調味料</label>
       </div>
-     <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材名", class="input-default input", id="ingredient_name">
-   
-
+      <div class='ingredient-wrap'>
+        <label class="form-text">分量</label>
+      </div>
+    </div>
+    <div class="ingredient-group ingredient-form">
+      <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+      <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+    </div>
 
     <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
     <%= javascript_tag  do %>
       const ingredient =  
-      `<input type="text" name="recipe_form[ingredient_names][]", placeholder="食材名", class="input-default input", id="ingredient_name">`
+      `  <div class="ingredient-group ingredient-form">
+      <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+      <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+    </div>`
     <% end %>
-
-    <button type="button" id="button_plus">食材項目を追加</button>
-    <button type="button" id="button_delete">食材項目を削除</button>
+    <div class="button-wrap">
+      <button type="button" class="ingredient-button" id="button_plus">行を追加</button>
+      <button type="button" class="ingredient-button" id="button_delete">行を削除</button>
+    </div>
+    
   </div>
 
 

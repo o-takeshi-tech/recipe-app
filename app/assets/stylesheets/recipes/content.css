@@ -1,0 +1,33 @@
+.hide{
+  display: none;
+}
+
+.ingredient-group{
+  display: flex;
+}
+
+.ingredient-wrap{
+  width:50%;
+  text-align: center;
+}
+
+.input-ingredient {
+  width: 100%;
+  margin: 5px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid  #401C00;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+.ingredient-button{
+  width: 50%;
+  margin: 5px;
+}
+
+.button-wrap{
+  display: flex;
+}
