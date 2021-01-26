@@ -116,7 +116,7 @@ http://52.68.31.63/
 | ------------------- | ---------- | --------------------------------|
 | name                | string     | null: false                     |
 | description         | text       | null: false                     |
-| user                | references | null: false, foreign_key: true  |
+| user_id             | references | null: false, foreign_key: true  |
 
 ### Association
 
@@ -141,7 +141,18 @@ http://52.68.31.63/
 | Column          | Type        | Options                        |
 | --------------- | ----------- | ------------------------------ |
 | ingredient_name | string      | null: false uniqueness: true   |
+
+### Association
+
+- has_many :recipes, through: recipe_ingredients
+
+## quantities テーブル
+
+| Column          | Type        | Options                        |
+| --------------- | ----------- | ------------------------------ |
 | quantity        | string      | null: false                    |
+| ingredient_id   | references  | null: false  foreign_key: true |
+| recipe_id       | references  | null: false  foreign_key: true |
 
 
 ### Association
