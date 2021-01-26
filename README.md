@@ -141,6 +141,7 @@ http://52.68.31.63/
 | Column          | Type        | Options                        |
 | --------------- | ----------- | ------------------------------ |
 | ingredient_name | string      | null: false uniqueness: true   |
+| quantity        | string      | null: false                    |
 
 
 ### Association
