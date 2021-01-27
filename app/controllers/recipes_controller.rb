@@ -27,7 +27,9 @@ class RecipesController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @recipe = RecipeForm.new(id: params[:id])
+  end
 
   def update
     if @recipe.update(recipe_params)
