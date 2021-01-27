@@ -2,8 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many  :recipe_ingredients, dependent: :destroy
   has_many  :ingredients, through: :recipe_ingredients
-  has_many  :quantities
-  has_one_attached :image
+  has_many  :quantities, dependent: :destroy
+  has_one_attached :image 
 
 
   def self.search(search)
