@@ -31,3 +31,22 @@
 .button-wrap{
   display: flex;
 }
+
+.ingredients{
+  width:50%;
+  margin: 0 auto;
+}
+.ingredients:hover{
+  background-color: #f0e68c ;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.ingredient-lists{
+  margin-top:15px;
+}
+.ingredient-row{
+  display: flex;
+  justify-content: space-between;
+  border-bottom:solid 1px #e5e5e5 ;
+}
