@@ -9,6 +9,8 @@ require("channels")
 require("../add")
 require("../destroy")
 require("../search")
+require("../popup")
+require("../savePopup")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
