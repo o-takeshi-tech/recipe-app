@@ -1,4 +1,7 @@
 function add(){
+  if (document.getElementById("button_plus") == null ){
+    return null;
+  }
   const buttonPlus = document.getElementById("button_plus");
   
   buttonPlus.addEventListener("click", () => {

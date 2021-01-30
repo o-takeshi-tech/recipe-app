@@ -1,4 +1,7 @@
 function destroy (){
+  if (document.getElementById("button_delete") == null ){
+    return null;
+  }
   const buttonDelete = document.getElementById("button_delete");
   
   buttonDelete.addEventListener("click", () => {
