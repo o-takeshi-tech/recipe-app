@@ -1,11 +1,11 @@
 <%= render "shared/header"%>
 
-<%= form_with model: @recipe, class: 'registration-main new', local: true do |f| %>
+<%= form_with model: @recipe, url:content_recipes_path, class: 'registration-main new', local: true do |f| %>
 
 <div class='form-wrap new'>
   <div class='form-header'>
     <h1 class='form-header-text'>
-      レシピ登録
+      レシピのタイトル
     </h1>
   </div>
 
@@ -13,75 +13,14 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">レシピ名</label>
+      <label class="form-text">レシピタイトル</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.text_area :name, class:"input-default", id:"name", placeholder:"レシピ名を入力してください", maxlength:"40" %>
+    <%= f.text_area :name, class:"input-default", id:"name", placeholder:"レシピタイトルを入力してください", maxlength:"40" %>
   </div> 
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">イメージ</label>
-       <span class="indispensable">必須</span>
-    </div>
-     <label class="form-image">
-      <%= f.file_field :image, class: 'hidden' %>
-    </label>
-  </div> 
-
- 
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">食材</label>
-      <span class="indispensable">必須</span>
-    </div>
-    
-   
-    <div class="ingredients" >
-      <div class="nested-fields">
-        <select name="recipe[ingredient_ids][]">
-          <option value="">食材をえらんでください</option>
-            <% @ingredients.each do |ingredient| %>
-              <option value=<%=ingredient.id%>><%= ingredient.ingredient_name%></option>
-            <% end %>
-        </select>
-      </div>
-    </div>
-
-    <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
-    <%= javascript_tag  do %>
-      const ingredient =  
-      ` <div class="nested-fields">
-         <select name="recipe[ingredient_ids][]">
-          <option value="">食材をえらんでください</option>
-            <% @ingredients.each do |ingredient| %>
-              <option value=<%=ingredient.id%>><%= ingredient.ingredient_name%></option>
-            <% end %>
-        </select>
-      </div>`
-    <% end %>
-
-    <button type="button" id="button_plus">食材項目を追加</button>
-    <button type="button" id="button_delete">食材項目を削除</button>
-     <%= link_to "食材を登録する", new_ingredient_path, class:"info-text" %>
-  </div>
-
-
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">レシピ説明</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_area :description, class:"input-recipe", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
-  </div>
-
-  <div class="form-group">
-  </div>
 
   <div class='register-btn'>
-    <%= f.submit "レシピ登録" ,class:"register-red-btn" %>
+    <%= f.submit "レシピ内容登録へ進む" ,class:"register-red-btn" %>
   </div>
 </div>
 <% end %>

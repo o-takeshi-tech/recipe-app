@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'match'
       get 'search'
+      post 'content'
     end
   end
   resources :ingredients, only: %i[new create]

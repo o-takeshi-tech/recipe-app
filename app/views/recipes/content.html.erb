@@ -1,0 +1,131 @@
+<%= render "shared/header"%>
+
+<%= form_with model: @recipe, url:recipes_path, method: :post , class: 'registration-main new', local: true do |f| %>
+
+<div class='form-wrap new'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      <%= @recipe.name %>
+      <%= f.text_area :name, class:"input-default hide", id:"name", placeholder:"食材名を入力してください", maxlength:"40" %>
+    </h1>
+  </div>
+
+  <%= render 'shared/error_messages', model: @recipe %>  
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">イメージ</label>
+       <span class="indispensable">必須</span>
+    </div>
+     <label class="form-image">
+      <%= f.file_field :image%>
+    </label>
+  </div> 
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">材料</label>
+    </div>
+    <div class="ingredients" id="ingredient-index">
+      <div class="ingredient-content">
+        <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+          <div class="ingredient-lists">
+            <% @recipe.ingredient_names.each_with_index do |ingredient, i|%>
+              <div class="ingredient-row">
+                <p class="ingredient-name"><%= ingredient %></p>
+                <p class="ingredient-quantitiy"><%= @recipe.quantities[i] %></p>
+              </div>
+            <% end %>
+          </div> 
+        <% else %>
+          <div class="ingredient-lists">
+            <div class="ingredient-row">
+              <p class="ingredient-name">食材を入力してください</p>
+              <p class="ingredient-quantitiy">量を入力してください</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div> 
+  <div class="hidden">
+    <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+      <% @recipe.ingredient_names.each_with_index do |ingredient, i| %>
+        <div class="ingredient-group ingredient-form">
+          <input type="text" name="recipe_form[ingredient_names][]", value="<%= ingredient %>", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+          <input type="text" name="recipe_form[quantities][]", value="<%= @recipe.quantities[i] %>" , placeholder="分量", class="input-ingredient input", id="quantitity">
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">レシピ説明</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :description, class:"input-recipe", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
+  </div>
+
+  <div class="form-group">
+  </div>
+
+  <div class='register-btn'>
+    <%= f.submit "レシピ登録" ,class:"register-red-btn" %>
+  </div>
+</div>
+<% end %>
+
+<!-- レイヤー -->
+<div id="layer"></div>
+<!-- ポップアップ -->
+<div id="popup">
+  <div class="popup-box">
+    <%= form_with model: @recipe, url: content_recipes_path, method: :post, class: 'popup-main', id:"form", local: true do |f| %>
+      <%= f.text_area :name, class:"input-default hide", id:"name", placeholder:"食材名を入力してください", maxlength:"40" %>
+      <div class="popup-wrap">
+        <div class="popup-form"> 
+          <div class="ingredient-group">
+            <div class='ingredient-wrap'>
+              <label class="form-text">食材・調味料</label>
+            </div>
+            <div class='ingredient-wrap'>
+              <label class="form-text">分量</label>
+            </div>
+          </div>
+            <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+              <% @recipe.ingredient_names.each_with_index do |ingredient, i| %>
+                <div class="ingredient-group ingredient-form">
+                  <input type="text" name="recipe_form[ingredient_names][]", value="<%= ingredient %>", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+                  <input type="text" name="recipe_form[quantities][]", value="<%= @recipe.quantities[i] %>" , placeholder="分量", class="input-ingredient input", id="quantitity">
+                </div>
+              <% end %>
+            <% else %>
+              <div class="ingredient-group ingredient-form">
+                <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+                <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+              </div>
+            <% end %>
+
+          <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
+          <%= javascript_tag  do %>
+            const ingredient =  
+            `  <div class="ingredient-group ingredient-form">
+            <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+            <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+          </div>`
+          <% end %>
+          <div class="button-wrap">
+            <button type="button" class="ingredient-button" id="button_plus">行を追加</button>
+            <button type="button" class="ingredient-button" id="button_delete">行を削除</button>
+          </div>
+          
+        </div>
+        <%= f.submit "保存して閉じる" ,class:"popup-register-btn", id:"save"%>
+        <button type="button" class="batsu" id="close">×</button>
+      </div>
+    <% end %>
+  </div>  
+</div>
+
+
+<%= render "shared/footer"%>
