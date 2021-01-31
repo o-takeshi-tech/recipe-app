@@ -16,6 +16,21 @@
     <div class='recipe-img-content'>
       <%= image_tag @recipe.image.variant(resize: '500x500') ,class:"recipe-box-img" if @recipe.image.attached? %>
     </div>
+    
+    <div class="recipe-ingredient">
+      <p class="method">材料</p>
+      <% @recipe.ingredients.each_with_index do |ingredient, i|%>
+        <div class="ingredient-row">
+          <p class="ingredient-name"><%= ingredient.ingredient_name %></p>
+          <% ingredient.quantities.each do | quantity |%>
+            <% if quantity.recipe_id == @recipe.id %>
+              <p class="ingredient-quantitiy"><%= quantity.quantity %></p>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    
     <div class="recipe-explain-box">
       <p class="method">作り方</p>
       <span><%= @recipe.description %></span>
