@@ -18,33 +18,69 @@
        <span class="indispensable">必須</span>
     </div>
      <label class="form-image">
-      <%= f.file_field :image, class: 'hidden' %>
+      <%= f.file_field :image%>
     </label>
   </div> 
 
-  <div class="ingredients" id="ingredient-index">
-    <div class="ingredient-content">
-      <% if @recipe.ingredient_names %>
-        <% @recipe.ingredient_names.each do |ingredient|%>
-          <p><%= ingredient.ingredient_name %></p>
-        <% end %>
-        <% else %>
-        <div class="ingredient-lists">
-          <div class="ingredient-row">
-            <p class="ingredient-name">食材を入力してください</p>
-            <p class="ingredient-quantitiy">量を入力してください</p>
-          </div>
-        </div>
-      <% end %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">材料</label>
     </div>
+    <div class="ingredients" id="ingredient-index">
+      <div class="ingredient-content">
+        <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+          <div class="ingredient-lists">
+            <div class="ingredient-row">
+              <% @recipe.ingredient_names.each do |ingredient|%>
+                <p class="ingredient-name"><%= ingredient %></p>
+              <% end %>
+              <% @recipe.quantities.each do |quantity|%>
+                <p class="ingredient-quantitiy"><%= quantity %></p>
+              <% end %>
+            </div>
+          </div> 
+        <% else %>
+          <div class="ingredient-lists">
+            <div class="ingredient-row">
+              <p class="ingredient-name">食材を入力してください</p>
+              <p class="ingredient-quantitiy">量を入力してください</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div> 
+
+  <div class="ingredient-group ingredient-form hidden">
+    <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+    <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+  </div>
+  
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">レシピ説明</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :description, class:"input-recipe", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
   </div>
 
-  <!-- レイヤー -->
-  <div id="layer"></div>
-  <!-- ポップアップ -->
-  <div id="popup">
-    <div class="popup-box">
-      <%= form_with model: @recipe , url: recipes_path, class: 'registration-main new', local: true do |f| %>
+  <div class="form-group">
+  </div>
+
+  <div class='register-btn'>
+    <%= f.submit "レシピ登録" ,class:"register-red-btn" %>
+  </div>
+</div>
+<% end %>
+
+<!-- レイヤー -->
+<div id="layer"></div>
+<!-- ポップアップ -->
+<div id="popup">
+  <div class="popup-box">
+    <%= form_with model: @recipe, url: content_recipes_path, method: :post, class: 'popup-main', id:"form", local: true do |f| %>
+      <%= f.text_area :name, class:"input-default hide", id:"name", placeholder:"食材名を入力してください", maxlength:"40" %>
+      <div class="popup-wrap">
         <div class="popup-form"> 
           <div class="ingredient-group">
             <div class='ingredient-wrap'>
@@ -73,29 +109,12 @@
           </div>
           
         </div>
-        <%= f.submit "保存して閉じる", class:"popup-register-btn" ,id:"close"%>
-      <% end %>
-    </div>
-      
-  </div>
-
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">レシピ説明</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_area :description, class:"input-recipe", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
-  </div>
-
-  <div class="form-group">
-  </div>
-
-  <div class='register-btn'>
-    <%= f.submit "レシピ登録" ,class:"register-red-btn" %>
-  </div>
+        <%= f.submit "保存して閉じる" ,class:"popup-register-btn", id:"save"%>
+        <button type="button" class="batsu" id="close">×</button>
+      </div>
+    <% end %>
+  </div>  
 </div>
-<% end %>
 
 
 <%= render "shared/footer"%>

@@ -33,7 +33,7 @@
 }
 
 .ingredients{
-  width:50%;
+  width:100%;
   margin: 0 auto;
 }
 .ingredients:hover{
@@ -77,10 +77,15 @@
 }
 
 .popup-box{
-  overflow: auto;
   width: 450px;
   overflow: auto;
   height: 48vh;
+}
+
+.popup-wrap{
+  width: 100%;
+  background-color: white;
+  padding-bottom: 70px;
 }
 
 .popup-form {
@@ -99,4 +104,40 @@
   line-height: 20px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.popup-main{
+  width: 100%;
+  height: 100%;
+  background-color: #F6F3E8;
+  display: flex;
+  justify-content: center;
+}
+
+.hidden{
+  display: none;
+}
+
+.batsu{
+  font-size: 200%;/*ボタンの大きさ*/
+  font-weight: bold;
+  border: 1px solid #999;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  transition: .2s;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+  
+.batsu:hover{
+  background: #333;
+  border-color: #333;
+  color: #FFF;
 }
