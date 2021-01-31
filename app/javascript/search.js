@@ -1,4 +1,7 @@
 function search (){
+  if (document.getElementById("keyword") == null ){
+    return null;
+  }
   const inputElement = document.getElementById("keyword");
   inputElement.addEventListener("keyup", () => {
     const keyword = document.getElementById("keyword").value;
