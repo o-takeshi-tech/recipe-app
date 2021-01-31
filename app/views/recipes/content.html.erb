@@ -30,14 +30,12 @@
       <div class="ingredient-content">
         <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
           <div class="ingredient-lists">
-            <div class="ingredient-row">
-              <% @recipe.ingredient_names.each do |ingredient|%>
+            <% @recipe.ingredient_names.each_with_index do |ingredient, i|%>
+              <div class="ingredient-row">
                 <p class="ingredient-name"><%= ingredient %></p>
-              <% end %>
-              <% @recipe.quantities.each do |quantity|%>
-                <p class="ingredient-quantitiy"><%= quantity %></p>
-              <% end %>
-            </div>
+                <p class="ingredient-quantitiy"><%= @recipe.quantities[i] %></p>
+              </div>
+            <% end %>
           </div> 
         <% else %>
           <div class="ingredient-lists">
@@ -50,12 +48,16 @@
       </div>
     </div>
   </div> 
-
-  <div class="ingredient-group ingredient-form hidden">
-    <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
-    <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+  <div class="hidden">
+    <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+      <% @recipe.ingredient_names.each_with_index do |ingredient, i| %>
+        <div class="ingredient-group ingredient-form">
+          <input type="text" name="recipe_form[ingredient_names][]", value="<%= ingredient %>", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+          <input type="text" name="recipe_form[quantities][]", value="<%= @recipe.quantities[i] %>" , placeholder="分量", class="input-ingredient input", id="quantitity">
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">レシピ説明</label>
@@ -90,10 +92,19 @@
               <label class="form-text">分量</label>
             </div>
           </div>
-          <div class="ingredient-group ingredient-form">
-            <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
-            <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
-          </div>
+            <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+              <% @recipe.ingredient_names.each_with_index do |ingredient, i| %>
+                <div class="ingredient-group ingredient-form">
+                  <input type="text" name="recipe_form[ingredient_names][]", value="<%= ingredient %>", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+                  <input type="text" name="recipe_form[quantities][]", value="<%= @recipe.quantities[i] %>" , placeholder="分量", class="input-ingredient input", id="quantitity">
+                </div>
+              <% end %>
+            <% else %>
+              <div class="ingredient-group ingredient-form">
+                <input type="text" name="recipe_form[ingredient_names][]", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+                <input type="text" name="recipe_form[quantities][]", placeholder="分量", class="input-ingredient input", id="quantitity">
+              </div>
+            <% end %>
 
           <%# 追加・削除をするためのフォームをJSで扱えるようにする %>
           <%= javascript_tag  do %>
