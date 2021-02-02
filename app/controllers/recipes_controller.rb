@@ -28,11 +28,16 @@ class RecipesController < ApplicationController
   def show; end
 
   def edit
-    @recipe = RecipeForm.new(id: params[:id])
+    if params[:recipe_form].present?
+      @recipe = RecipeForm.new(recipe_params.merge(id: params[:id]))
+    else
+      @recipe = RecipeForm.new(id: params[:id])
+    end
   end
 
   def update
-    if @recipe.update(recipe_params)
+    @recipe = RecipeForm.new(recipe_params.merge(id: params[:id]))
+    if @recipe.update
       redirect_to root_path
     else
       render :edit
