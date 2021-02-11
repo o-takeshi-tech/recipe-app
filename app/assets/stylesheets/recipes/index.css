@@ -5,43 +5,20 @@
   overflow: scroll;
 }
 
-.form{
-  display: flex;
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.search{
-  padding: 10px;
-  color: #401C00;
-  border: 1px solid #401C00;
-}
-
-.search-form{
-  width: 30%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .child{
   border-bottom:#666 1px solid;
   margin: 10px 0;
   padding-left: 11px;
 }
-.submit{
-  margin-top: 10px;
-  padding: 10px;
-  color: #401C00;
-  border: 1px solid #401C00;
-}
+
 
 .recipes{
-  width:100vw;
+  width:80%;
   height: 80vh;
+  background-color: #FFFFFF;
+  margin: 20px auto;
+  border: solid 1px #CFAA7F;
+  border-radius: 3%;
 }
 
 .recipe{

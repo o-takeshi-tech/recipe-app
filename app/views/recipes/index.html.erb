@@ -1,15 +1,6 @@
 <%= render "shared/header"%>
 
 <div class="main">
-  <%= form_with(url: search_recipes_path, local: true, method: :get, class: "form") do |form| %>
-    <div class="search-form">
-      <%= form.text_field :keyword, placeholder: "料理名・食材名", class: "search" %>
-      <div id="search-result"></div>
-    </div>
-    <%= form.submit "レシピ検索", class: "submit" %>
-  <% end %>
-  
-
   <div class="recipes">
     <% @recipes.each do |recipe| %>
       <div class="recipe">
