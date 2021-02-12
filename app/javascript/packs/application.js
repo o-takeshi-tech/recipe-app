@@ -12,7 +12,7 @@ require("../search")
 require("../popup")
 require("../savePopup")
 require("../editPopup")
-require("../savePopup")
+require("../saveImage")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
