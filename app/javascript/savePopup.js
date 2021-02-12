@@ -5,9 +5,9 @@ function savePopup(){
 const save = document.getElementById("save");
 save.addEventListener('click', (e) => {
   const XHR = new XMLHttpRequest();
-  const formDate = new FormData(getElementById("form"));
+  const formData = new FormData(getElementById("form"));
   XHR.open("POST", content_recipes_path, true);
-  XHR.send(formDate);
+  XHR.send(formData);
   XHR.onload = () =>{
     if (XHR.status != 200 ){
       alert(`Error ${XHR.status}: ${XHR.statusText}`);
