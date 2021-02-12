@@ -14,7 +14,7 @@
       <% end %>
     </div>
     <div class='recipe-img-content'>
-      <%= image_tag @recipe.image.variant(resize: '500x500') ,class:"recipe-box-img" if @recipe.image.attached? %>
+      <%= image_tag @recipe.image ,class:"recipe-box-img" if @recipe.image.attached? %>
     </div>
     
     <div class="recipe-ingredient">
