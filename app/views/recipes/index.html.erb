@@ -4,9 +4,11 @@
   <div class="recipes">
     <% @recipes.each do |recipe| %>
       <div class="recipe">
-      <% if recipe.image.attached? %>
-        <%= image_tag recipe.image , class:"food-picture" if recipe.image.attached?%>
-      <% end %>
+        <% if recipe.image.attached? %>
+          <%= image_tag recipe.image , class:"food-picture" if recipe.image.attached?%>
+          <% else %>
+          <%= image_tag "oishii2_man.png" , class:"food-picture"  %>
+        <% end %>
         <div class="content">
           <%= link_to recipe.name, recipe_path(recipe) ,class:"title" %>
           <p class="ingredient">材料：

@@ -90,6 +90,7 @@
     <%= form_with model: @recipe, url: edit_recipe_path(@recipe.id), method: :get, class: 'popup-main', id:"form", local: true do |f| %>
       <%= f.text_area :name, class:"input-default hide", id:"name", placeholder:"食材名を入力してください", maxlength:"40" %>
       <%= f.text_area :description, class:"input-recipe hide", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
+      <%= f.file_field :image,class:"input-recipe hide" %>
       <div class="popup-wrap">
         <div class="popup-form"> 
           <div class="ingredient-group">

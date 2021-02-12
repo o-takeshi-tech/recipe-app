@@ -1,79 +1,86 @@
 <%= render "shared/header"%>
 
-<%= form_with model: @recipe, url:recipes_path, method: :post , class: 'registration-main new', local: true do |f| %>
+<div class="registration-main new">
+  <div class='form-wrap new'>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        <%= @recipe.name %>
+      </h1>
+    </div>
+    <%= form_with model: @recipe, url: content_recipes_path, method: :post, id:"image-post", local: true do |f| %>
+      <div class="form-group">
+        <%= if @recipe.image.present? %>
+          <% image_tag @recipe.image %>
+        <% else %>
+        <div class='form-text-wrap'>
+          <label class="form-text">イメージ</label>
+          <span class="indispensable">クリックして保存する</span>
+        </div>
+          <label class="form-image">
+            <%= f.file_field :image , class:"hide"%>
+          </label>
+      </div> 
+    <% end %>
 
-<div class='form-wrap new'>
-  <div class='form-header'>
-    <h1 class='form-header-text'>
-      <%= @recipe.name %>
+    <%= form_with model: @recipe, url:recipes_path, method: :post , id:"main-form", local: true do |f| %>
       <%= f.text_area :name, class:"input-default hide", id:"name", placeholder:"食材名を入力してください", maxlength:"40" %>
-    </h1>
-  </div>
+      <%= render 'shared/error_messages', model: @recipe %>  
+      <%= f.file_field :image, class:"hide"%>
 
-  <%= render 'shared/error_messages', model: @recipe %>  
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">イメージ</label>
-       <span class="indispensable">必須</span>
-    </div>
-     <label class="form-image">
-      <%= f.file_field :image%>
-    </label>
-  </div> 
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">材料</label>
-    </div>
-    <div class="ingredients" id="ingredient-index">
-      <div class="ingredient-content">
-        <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
-          <div class="ingredient-lists">
-            <% @recipe.ingredient_names.each_with_index do |ingredient, i|%>
-              <div class="ingredient-row">
-                <p class="ingredient-name"><%= ingredient %></p>
-                <p class="ingredient-quantitiy"><%= @recipe.quantities[i] %></p>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">材料</label>
+        </div>
+        <div class="ingredients" id="ingredient-index">
+          <div class="ingredient-content">
+            <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+              <div class="ingredient-lists">
+                <% @recipe.ingredient_names.each_with_index do |ingredient, i|%>
+                  <div class="ingredient-row">
+                    <p class="ingredient-name"><%= ingredient %></p>
+                    <p class="ingredient-quantitiy"><%= @recipe.quantities[i] %></p>
+                  </div>
+                <% end %>
+              </div> 
+            <% else %>
+              <div class="ingredient-lists">
+                <div class="ingredient-row">
+                  <p class="ingredient-name">食材を入力してください</p>
+                  <p class="ingredient-quantitiy">量を入力してください</p>
+                </div>
               </div>
             <% end %>
-          </div> 
-        <% else %>
-          <div class="ingredient-lists">
-            <div class="ingredient-row">
-              <p class="ingredient-name">食材を入力してください</p>
-              <p class="ingredient-quantitiy">量を入力してください</p>
-            </div>
           </div>
+        </div>
+      </div> 
+      <div class="hidden">
+        <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
+          <% @recipe.ingredient_names.each_with_index do |ingredient, i| %>
+            <div class="ingredient-group ingredient-form">
+              <input type="text" name="recipe_form[ingredient_names][]", value="<%= ingredient %>", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
+              <input type="text" name="recipe_form[quantities][]", value="<%= @recipe.quantities[i] %>" , placeholder="分量", class="input-ingredient input", id="quantitity">
+            </div>
+          <% end %>
         <% end %>
       </div>
-    </div>
-  </div> 
-  <div class="hidden">
-    <% if @recipe.ingredient_names != [""] && @recipe.ingredient_names.present? %>
-      <% @recipe.ingredient_names.each_with_index do |ingredient, i| %>
-        <div class="ingredient-group ingredient-form">
-          <input type="text" name="recipe_form[ingredient_names][]", value="<%= ingredient %>", placeholder="食材・調味料", class="input-ingredient input", id="ingredient_name">
-          <input type="text" name="recipe_form[quantities][]", value="<%= @recipe.quantities[i] %>" , placeholder="分量", class="input-ingredient input", id="quantitity">
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">レシピ説明</label>
+          <span class="indispensable">必須</span>
         </div>
-      <% end %>
+        <%= f.text_area :description, class:"input-recipe", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
+      </div>
+
+      <div class="form-group">
+      </div>
+
+      <div class='register-btn'>
+        <%= f.submit "レシピ登録" ,class:"register-red-btn" %>
+      </div>
+  
     <% end %>
   </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">レシピ説明</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_area :description, class:"input-recipe", id:"password", placeholder:"レシピ説明" ,rows: "10"%>
-  </div>
-
-  <div class="form-group">
-  </div>
-
-  <div class='register-btn'>
-    <%= f.submit "レシピ登録" ,class:"register-red-btn" %>
-  </div>
-</div>
-<% end %>
+</div >
 
 <!-- レイヤー -->
 <div id="layer"></div>

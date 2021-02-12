@@ -19,16 +19,20 @@
   margin: 20px auto;
   border: solid 1px #CFAA7F;
   border-radius: 3%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .recipe{
   display: flex;
   justify-content: center;
-  margin: 20px
+  margin: 10px
 }
 
 .food-picture{
-  width:200px;
+  width:100px;
+  height: 100px;
   margin-right: 10px;
 }
 
