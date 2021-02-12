@@ -5,9 +5,18 @@
     </div>
     <div class="user-name">
       <% if user_signed_in? %>
-        <%= "#{current_user.username}さん、ようこそ" %> 
+        <p>ようこそ</p> 
       <% end %>
     </div>
+  </div>
+  
+  <div class="search-form">
+    <%= form_with(url: search_recipes_path, local: true, method: :get, class: "form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "料理名・食材名", class: "search" %>
+      <%= form.submit "レシピ検索", class: "submit" %>
+    <% end %>
+    <%# 後に実装 %>
+    <%# <div id="search-result"></div> %>
   </div>
   
   <div class="header-right">

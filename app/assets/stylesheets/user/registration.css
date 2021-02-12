@@ -8,9 +8,13 @@
 
 /* form-wrapはレシピ作成画面でも使用しています */
 .form-wrap {
-  width: 50%;
-  background-color: white;
-  padding-bottom: 70px;
+  width:60%;
+  height: 80vh;
+  background-color: #FFFFFF;
+  margin: 20px auto;
+  border: solid 1px #CFAA7F;
+  border-radius: 3%;
+  overflow: scroll;
 }
 
 .form-header {
