@@ -20,36 +20,41 @@
   border: solid 1px #CFAA7F;
   border-radius: 3%;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-flow: wrap;
+  overflow: scroll;
 }
 
 .recipe{
   display: flex;
-  justify-content: center;
-  margin: 10px
+  padding: 10px;
+  width:50%;
 }
 
 .food-picture{
-  width:100px;
-  height: 100px;
+  width:200px;
+  height:200px;
   margin-right: 10px;
 }
-
+.content{
+  width:100%;
+}
 .title{
   text-decoration: none;
   color: #7D940C;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .description{
   color:#808080;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .ingredient{
   color:#CFAA7F;
   font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+
 }
 
 @media (max-width: 1024px){
